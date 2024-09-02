@@ -14,12 +14,12 @@ public class GlobalExceptionHandlerAdvice {
     Logger log = LoggerFactory.getLogger(GlobalExceptionHandlerAdvice.class);
 
     @ExceptionHandler(value = Exception.class) //任何异常的父类都是Exception，做异常的统一处理
-    public ResponseMessage handleException(Exception e, HttpServletRequest request, HttpServletResponse response) {
+    public ResponseMessage<Void> handleException(Exception e, HttpServletRequest request, HttpServletResponse response) {
 
         //记录日志
         log.error("统一异常：",e);
                         //无论后台出现什么异常，前段统一返回code500，表示后端异常
                         //至于是什么类型的异常，可以查询日志
-        return new ResponseMessage(500,"error",null);
+        return new ResponseMessage<>(500,"error",null);
     }
 }

@@ -44,6 +44,13 @@ public class ResponseMessage <T>{
     public static <T> ResponseMessage<T> success(T data) {
 
                                         //这里就是200
-        return new ResponseMessage<T>(HttpStatus.OK.value(), "success！", data);
+        return new ResponseMessage(HttpStatus.OK.value(), "success！", data);
+    }
+
+    //delete无参数传入，重构上面的method
+    public static <T> ResponseMessage<T> success() {
+
+        //这里就是200
+        return new ResponseMessage(HttpStatus.OK.value(), "success！", null);
     }
 }
